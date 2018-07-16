@@ -48,14 +48,16 @@ public class WebSecurityConfig extends WebMvcConfigurerAdapter{
 
                 return true;
             }
-
-            for (Cookie cookie : cookies) {
-                System.out.println(cookie.getName() + "拦截器中的cookie");
+            if(cookies != null){
+                for (Cookie cookie : cookies) {
+                    System.out.println(cookie.getName() + "拦截器中的cookie");
                     if (cookie.getName().equals(SESSION_KEY)) {
 
                         return true;
                     }
                 }
+            }
+
 
             response.sendRedirect("/blog/admin/login");
 
